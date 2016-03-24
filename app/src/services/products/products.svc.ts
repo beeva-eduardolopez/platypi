@@ -3,16 +3,8 @@ import BaseService from '../base/base.svc';
 import UserRepository from '../../repositories/user/user.repo';
 
 export default class ProductsService extends BaseService {
-
-    constructor(private productsService: ProductsService) {
+    constructor(private userRepository: UserRepository) {
         super();
-    }
-    placeOrder(): void {
-        this.productsService.placeOrder(this.context.order).then((success) => {
-            this.navigator.navigate(ConfirmationViewControl);
-        }).catch((error) => {
-            this.context.error = error;
-        });
     }
 
     getProducts(): async.IThenable<Array<models.IProduct>> {
